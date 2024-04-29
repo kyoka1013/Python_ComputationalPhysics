@@ -24,7 +24,8 @@ complexは複素数
 1,リストlist 
 2,タプルtuple 
 3,辞書dict 
-4,集合set ''' 
+4,集合set 
+''' 
 
 # A.2　リスト型 
 x = [1, 2.0, "apple"] # case1 
@@ -66,6 +67,7 @@ grape
 '''
 for i, fruit in enumerate(fruits):  #case2
     print(i, fruit)
+print(enumerate(fruits))
 #実行結果
 '''
 >>> for i, fruit in enumerate(fruits):
@@ -79,9 +81,29 @@ for i, fruit in enumerate(fruits):  #case2
 '''
 case2はインデックスが必要な場合
 enumerate関数を使用している。
-この関数は、ループの各繰り返しでアイテムのインデックスとその値を与える。
+enumerate関数は、ループの各繰り返しでアイテムのインデックスとその値を与えるために使用される。
 ここでは、iがインデックス（0から始まる）を、fruitがその時点でのアイテムの値を保持する。
 この方法は、アイテムの値だけでなく、その位置（インデックス）も重要な場合に便利。
+【補足】
+enumerate関数の公式な定義は以下の通り。
+enumerate(iterable, start=0)
+enumerate関数は、与えられたイテラブル（リスト、タプル、文字列など）から、インデックスと要素のペアを生成するイテレータを返す。
+startパラメータは、インデックスの開始値を指定する（デフォルトは0）。
+各要素に対して、インデックス番号とその要素をタプルで返す(タプルについては後述)。
+
+Q,enumerateって実際何を返すの？
+A,試しにコードを実行してみよう
+
+>>> print(enumerate(fruits))
+<enumerate object at 0x00000249FDB1EBB0>
+
+enumerate関数は、イテラブル（リスト、タプル、文字列など）からインデックスと要素のペアを生成するイテレータを返す。
+そのため、print関数で直接enumerate関数を呼び出すと、イテレータオブジェクトの情報が表示される。
+具体的には、<enumerate object at 0x00000249FDB1EBB0>という表記は、enumerate関数によって生成されたイテレータオブジェクトの型とメモリ上の場所（アドレス）を示している。
+<enumerate object>: イテレータオブジェクトの型を示す。
+at 0x00000249FDB1EBB0: イテレータオブジェクトがメモリ上のどのアドレスに配置されているかを示す。
+この表記は、Pythonのデバッグや理解のために役立つ、通常のプログラム実行中にはあまり意味がない。
+通常、イテレータオブジェクトを使用する際には、forループなどで要素を逐次取得し、処理する。
 '''
 Fruits = [fruit.capitalize() for fruit in fruits]
 print(Fruits)
@@ -140,12 +162,16 @@ test1 = prices.get('banana', 0)
 test2 = prices.get('banana')
 print(test1)
 print(test2)
+test3 = prices.get('apple')
+print(test3)
 # 実行結果
 '''
 >>> print(test1)
 0
 >>> print(test2)
 None
+>>> print(test3)
+100
 '''
 #解説
 '''
@@ -196,6 +222,15 @@ print(prices)
 >>> print(prices)
 {'Apple': 100, 'Grape': 150, 'Orange': 300}
 '''
+# 解説
+'''
+Pythonの辞書内包表記（dictionary comprehension）と呼ばれる機能を使用している。
+辞書内包表記は、イテラブル（例えば、リストや辞書など）から新しい辞書を作成するためのコンパクトな方法。
+一般的な辞書内包表記の構文は次のとおり
+{key_expression: value_expression for item in iterable}
+ここで、key_expressionは各要素からキーを生成する式を表し、value_expressionは各要素から値を生成する式を表す。itemはイテラブルから取得される各要素を指します。
+
+'''
 
 # A.4　その他のコンテナデータ型
 # tuple
@@ -209,6 +244,8 @@ tupleは変更不可能な配列
 辞書型のキーは変更可能であるリストを受け付けないため
 例x = {}
   x[(0,1)] = 1.5
+  >>> print(x)
+  {(0, 1): 1.5}
 Pythonの辞書xを定義して、キーとしてタプル(0, 1)を使って、その値に1.5を割り当てている。
 Pythonの辞書は、特有なキーとそれに関連する値のペアの集合。
 ここで、キーはtuple(0, 1)で、対応する値は浮動小数点数の1.5。
@@ -244,7 +281,7 @@ step3)この集合をlist()関数に通すことで、重複のない要素を�
 ライブラリのはなし。メソッドとか多く出てくるからこれは本章に回すことにする。(いつか加筆するかも)
 '''
 
-# A.5
+# A.5 関数
 def plus(x, y):
     return x + y
 plus(1, 2)
@@ -298,10 +335,4 @@ a, b =...
 不必要な戻り値は_で受ければok(戻り値を使わないよっていう意思表示)
 コードのエラーを避けるために変数は最大3つにとどめておく。
 '''
-
-
-
-
-
-
 
