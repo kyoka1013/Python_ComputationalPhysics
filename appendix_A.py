@@ -411,3 +411,91 @@ yen 3桁毎にカンマ切り//,
 
 # A.8 省略
 
+# A.9 Tips
+# main関数
+'''
+ほとんどのサンプルコードではmainという名前の関数を定義してそれを実行する形式にしている。
+'''
+def func(x):
+    print(x)
+    print(y)
+
+x,y = 1,2 #グローバル変数
+func(x)
+'''
+>>> def func(x):
+...     print(x)
+...     print(y)
+...
+>>> x,y = 1,2
+>>> func(x)
+1
+2
+'''
+'''
+エラーが起きることなく実行されている。
+Pythonにおける変数のスコープは関数単位。
+関数の中で定義した変数はその関数の外からは見えない。関数の外で定義された変数は関数の中から見えるが変更出来ない。
+上の例ではグローバル変数yが関数の中から参照出来た。
+グローバル変数はど関数からも参照出来てしまうから注意が必要。そこで必要なのがmain関数
+'''
+def func(x):
+    print(x)
+    print(y)
+
+def main():
+    x,y = 1,2 #ローカル変数
+    func(x)
+
+if __name__ == '__main__':
+    main()
+'''
+>>> def func(x):
+...     print(x)
+...     print(y)
+...
+>>> def main():
+...     x,y = 1,2 #ローカル変数
+...     func(x)
+...
+>>> if __name__ == '__main__':
+...     main()
+...
+1
+2
+
+ローカル変数を使えば勝手にyが他のところで使われない
+'''
+
+# assert文(ソースコード,実行結果のみ)
+
+def sampleAssertfuntion(a):
+    assert isinstance(a, list)
+    assert len(a) > 0
+    x = a[-1]
+    print(x)
+
+sampleAssertfuntion(1)
+sampleAssertfuntion([])
+sampleAssertfuntion([1,"2","three"])
+
+'''
+>>> def sampleAssertfuntion(a):
+...     assert isinstance(a, list)
+...     assert len(a) > 0
+...     x = a[-1]
+...     print(x)
+...
+>>> sampleAssertfuntion(1)
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 2, in sampleAssertfuntion
+AssertionError
+>>> sampleAssertfuntion([])
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+  File "<stdin>", line 3, in sampleAssertfuntion
+AssertionError
+>>> sampleAssertfuntion([1,"2","three"])
+three
+'''
