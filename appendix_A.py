@@ -336,3 +336,73 @@ a, b =...
 コードのエラーを避けるために変数は最大3つにとどめておく。
 '''
 
+# A.6 文字列の書式
+'''
+数値データをprint関数で出力する際には、桁数などの書式を指定したい場合がある。
+書式を指定する方法(古い順)
+(1) % 演算子
+(2) format メソッド
+(3) f 文字列
+'''
+fruit, price, num = 'orange', 150, 3
+print ("{} {} cost {} yen" .format(num, fruit, price)) # format メソッド
+print(f"{num} {fruit} cost {price} yen") # f文字列
+# 実行結果
+'''
+>>> fruit, price, num = 'orange', 150, 3
+>>> print ("{} {} cost {} yen" .format(num, fruit, price)) # format メソッド
+3 orange cost 150 yen
+>>> print(f"{num} {fruit} cost {price} yen") # f文字列
+3 orange cost 150 yen
+'''
+# 解説
+'''
+formatメソッド
+formatted_string = "文字列 {}".format(value)
+f文字列
+formatted_string = f"文字列 {value}"
+'''
+# f文字列についての詳しい説明
+x = 123.456789
+print(f"x_1 = {x:.3f}")
+print(f"x_2 = {x:9.3f}")
+print(f"x_3 = {x:+9.3f}")
+print(f"x_4 = {x:.4g}")
+print(f"x_5 = {x:.3e}")
+n = 3
+print(f"file_{n:03d}")
+n = 12345
+print(f"yen = {n:,}")
+
+# 実行結果
+'''
+>>> print(f"x_1 = {x:.3f}")
+x_1 = 123.457
+>>> print(f"x_2 = {x:9.3f}")
+x_2 =   123.457
+>>> print(f"x_3 = {x:+9.3f}")
+x_3 =  +123.457
+>>> print(f"x_4 = {x:.4g}")
+x_4 = 123.5
+>>> print(f"x_5 = {x:.3e}")
+x_5 = 1.235e+02
+>>> n = 3
+>>> print(f"file_{n:03d}")
+file_003
+>>> n = 12345
+>>> print(f"yen = {n:,}")
+yen = 12,345
+'''
+
+# 解説
+'''
+x_1 小数点以下3桁(四捨五入)//.nf
+x_2 9文字分確保して右詰め//n
+x_3 符号を付ける//+ or -
+x_4 有効数字//g
+x_5 指数表示//e
+file 0パディングされた3桁の整数//0nd(0:0パディング,n:n桁,d:整数)
+yen 3桁毎にカンマ切り//,
+ 
+!f文字列はTex併用するときに便利
+'''
