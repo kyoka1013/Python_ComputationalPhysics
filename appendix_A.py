@@ -467,7 +467,7 @@ if __name__ == '__main__':
 ローカル変数を使えば勝手にyが他のところで使われない
 '''
 
-# assert文(ソースコード,実行結果のみ)
+# assert文(コード,実行結果のみ)
 
 def sampleAssertfuntion(a):
     assert isinstance(a, list)
