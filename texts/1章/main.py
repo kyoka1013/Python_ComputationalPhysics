@@ -20,3 +20,11 @@ print(array1)
 
 array1 = np.array([[0, -1j], [1j, 0]], dtype=complex)
 print(array1)
+
+# 1.2.3
+v = np.zeros((3,10), dtype = complex)
+print(v)
+print(v.dtype)
+print(v.shape)
+print(v.ndim)
+print(v.size)
