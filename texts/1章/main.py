@@ -28,3 +28,41 @@ print(v.dtype)
 print(v.shape)
 print(v.ndim)
 print(v.size)
+
+# 1.2.4
+x = np.arange(6)
+print(x)
+y = x * 10
+print(y)
+print(x + y)
+print(x * y)
+'''
+異なる形同士に演算するとどうなる？
+a = np.empty((4,3), dtype = int)
+b = np.empty((3,4), dtype = int)
+print(a)
+print(b)
+print(a + b)
+print(a * b)
+'''
+print(x * 2)
+print(x ** 2)
+print(x == 2)
+x = np.linspace(0, 1, 5) * np.pi / 2
+print(np.linspace(0, 1, 5))
+print(x)
+y = np.sin(x)
+print(y)
+'''
+mathモジュールの場合と比較
+import math
+def x_math():
+    li = [0.0, 0.25, 0.5, 0.75, 1.0]
+    newli = []
+    for i in li:
+        newli.append(i * math.pi / 2)
+    return newli
+print(x_math())
+y_math = [math.sin(x) for x in x_math()]
+print(y_math)
+'''
