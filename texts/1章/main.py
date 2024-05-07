@@ -66,3 +66,13 @@ print(x_math())
 y_math = [math.sin(x) for x in x_math()]
 print(y_math)
 '''
+
+# 1.2.5
+matrix = np.arange(4).reshape(2,2)
+print(matrix)
+vector = np.array([1, -1])
+print(vector)
+print(matrix @ matrix)
+print(matrix @ vector)
+print(vector @ matrix)
+print(vector @ vector)
