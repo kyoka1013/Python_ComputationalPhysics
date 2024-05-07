@@ -76,3 +76,8 @@ print(matrix @ matrix)
 print(matrix @ vector)
 print(vector @ matrix)
 print(vector @ vector)
+
+# 1.3 
+from scipy import linalg
+from scipy import integrate, optimize
+
