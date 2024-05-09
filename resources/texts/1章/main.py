@@ -81,3 +81,22 @@ print(vector @ vector)
 from scipy import linalg
 from scipy import integrate, optimize
 
+# 1.4
+import matplotlib.pyplot as plt
+import numpy as np
+# 1.4.1
+x = np.linspace(-2, 2, 101)
+print(x)
+y = np.tanh(x)
+print(y)
+# object指向インターフェース
+fig, ax = plt.subplots()
+ax.plot(x, y)
+ax.set_xlabel('x label')
+ax.set_ylabel('y label')
+fig.show()
+# pyplotインターフェース
+plt.plot(x, y)
+plt.xlabel('x label')
+plt.ylabel('y label')
+plt.show()
